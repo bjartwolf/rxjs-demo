@@ -1,9 +1,13 @@
 var event = require('events')
   , clock = new event.EventEmitter()
-  , tick;
+  , tick,
+  intervalInMs = 100;
 
+// Start ticking the clock as soon as the
+// module is loaded 
 setInterval(function () {
-    clock.emit('tick');
-    }, 100);
+    var now = new Date();
+    clock.emit('tick', now.getSeconds());
+    }, intervalInMs);
 
 module.exports = clock;
