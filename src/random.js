@@ -23,8 +23,7 @@ events.EventEmitter.prototype.toObservable = function(eventName) {
 // module is loaded 
 setInterval(function () {
     var now = new Date();
-    emitter.emit('tick', now.getSeconds()); 
-    //emitter.emit('tick', Math.random()); 
+    emitter.emit('tick', Math.random()); 
     }, intervalInMs);
 
 module.exports = emitter;
