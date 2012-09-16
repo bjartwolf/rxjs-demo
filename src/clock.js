@@ -1,10 +1,8 @@
-//var event = require('events')
 var Rx = require('rxjs')
   , events = require('events')
   , emitter = new events.EventEmitter()
-  , tick,
-  intervalInMs = 100;
-
+  , tick
+  , intervalInMs = 100;
 
 events.EventEmitter.prototype.toObservable = function(eventName) {
 	var parent = this;

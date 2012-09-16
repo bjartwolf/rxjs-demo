@@ -1,13 +1,16 @@
 var Rx = require('rxjs')
-  , clock = require('./src/clock.js')  
+  , sawtooth = require('./src/sawtooth.js')  
   , rnd = require('./src/random.js')  
-  , oClock = clock.toObservable('tick')
+  , oSawtooth = sawtooth .toObservable('tick')
   , oRnd = rnd.toObservable('tick');
 
-var zip = oClock.zip(oRnd, function (l,r) { 
-                               return l > r; 
-                               //return {left:l, right: r}; 
-                           })
-                .subscribe(function (x) {
-                    console.log(x);
-                });
+// Zip does not use any scheduler, it's possible to use functions
+// that takes a scheduler to orchestrate this
+
+var zip = oSawtooth.zip(oRnd, function (saw,random) { 
+                        console.log('saw: ' + saw + ' random: ' + random);
+                        return saw > random; 
+                    })
+                    .subscribe(function (x) {
+                        console.log(x);
+                    });
