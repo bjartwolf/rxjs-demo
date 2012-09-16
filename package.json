@@ -1,4 +1,4 @@
 {"name" : "streamstest"
 , "version" : "0.0.1"
-, "dependencies" : { "rxjs" : "2.0.0" } }
-
+, "dependencies" : { "rxjs-node" : "0.0.1" 
+,                    "rxjs" : ">1.0.0" } } 
