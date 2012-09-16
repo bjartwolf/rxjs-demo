@@ -5,7 +5,7 @@ var Rx = require('rxjs')
   , tick,
   intervalInMs = 100;
 
-
+// Copied from rxjs-node, that is not in the NPM
 events.EventEmitter.prototype.toObservable = function(eventName) {
 	var parent = this;
 	return Rx.Observable.create(function(observer) {

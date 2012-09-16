@@ -4,12 +4,10 @@ var Rx = require('rxjs')
   , oClock = clock.toObservable('tick')
   , oRnd = rnd.toObservable('tick');
 
-oRnd.take(5).subscribe(
-    function (rnd) {
-        console.log(rnd);
-    });
-
-oClock.subscribe(
-    function (sec) {
-        console.log(sec);
-    });
+var zip = oClock.zip(oRnd, function (l,r) { 
+                               return l > r; 
+                               //return {left:l, right: r}; 
+                           })
+                .subscribe(function (x) {
+                    console.log(x);
+                });
