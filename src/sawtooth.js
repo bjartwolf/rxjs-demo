@@ -31,4 +31,4 @@ setInterval(function () {
     }
     }, intervalInMs);
 
-module.exports = emitter;
+module.exports = emitter.toObservable('tick');

@@ -1,4 +1,3 @@
-//var event = require('events')
 var Rx = require('rxjs')
   , events = require('events')
   , emitter = new events.EventEmitter()
@@ -8,7 +7,7 @@ var Rx = require('rxjs')
   , value = (max-min)/2+min 
   , intervalInMs = 100;
 
-// Copied from rxjs-node, that is not in the NPM
+// Copied from rxjs-node, that is not in the NPM so I did not bother installing it
 events.EventEmitter.prototype.toObservable = function(eventName) {
 	var parent = this;
 	return Rx.Observable.create(function(observer) {
@@ -31,4 +30,4 @@ setInterval(function () {
     value = Math.max(value, min);
     }, intervalInMs);
 
-module.exports = emitter;
+module.exports = emitter.toObservable('tick');
